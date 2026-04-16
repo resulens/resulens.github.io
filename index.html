@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResumeAnalyzer | Upgrade Your Resume</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <span class="logo-icon">🎓</span> <span class="logo-text">ResumeAnalyzer</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#upload">Upload</a></li>
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+            </ul>
+            <a href="#upload" class="btn btn-primary nav-btn">Get Started</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="section hero">
+        <div class="container hero-container">
+            <div class="hero-left">
+                <div class="badge">Resume Analysis</div>
+                <h1>Upgrade Your <br>Resume <span class="accent-text">with Smart Insights</span></h1>
+                <p class="hero-desc">Get instant ATS score, keyword insights, and expert <br>suggestions to land your
+                    dream job faster.</p>
+                <div class="hero-actions">
+                    <a href="#upload" class="btn btn-primary">Analyze Resume →</a>
+                    <a href="#features" class="btn btn-secondary">See How It Works</a>
+                </div>
+                <div class="hero-stats">
+                    <span>⭐ 4.9/5 rating</span>
+                    <span>10k+ resumes analyzed</span>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="hero-mock-card">
+                    <div class="mock-header">
+                        <div class="mock-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="mock-title">
+                            <h4>Resume Score</h4>
+                        </div>
+                    </div>
+                    <div class="mock-circle-wrapper">
+                        <!-- Demonstrates the layout exactly like the reference -->
+                        <div class="mock-circle">
+                            <div class="circle-content">
+                                <span class="mock-score-text">82%</span>
+                                <span class="mock-score-label">ATS Score</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mock-bars-wrapper">
+                        <div class="mock-bar-item">
+                            <div class="bar-labels"><span>Keywords</span><span>78%</span></div>
+                            <div class="bar-track">
+                                <div class="bar-fill status-yellow" style="width: 78%"></div>
+                            </div>
+                        </div>
+                        <div class="mock-bar-item">
+                            <div class="bar-labels"><span>Formatting</span><span>90%</span></div>
+                            <div class="bar-track">
+                                <div class="bar-fill status-yellow" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="mock-bar-item">
+                            <div class="bar-labels"><span>Impact</span><span>72%</span></div>
+                            <div class="bar-track">
+                                <div class="bar-fill status-yellow" style="width: 72%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Upload Section -->
+    <section id="upload" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="subtitle">UPLOAD</span>
+                <h2>Analyze your resume in seconds</h2>
+                <p>Drop your resume below and let our smart analyzer do the heavy lifting.</p>
+            </div>
+
+            <div class="upload-wrapper">
+                <!-- Step 1: Drop Zone -->
+                <div id="drop-zone" class="drop-zone">
+                    <div class="upload-icon">↑</div>
+                    <h3>Drag & drop your resume here</h3>
+                    <p>PDF or DOCX up to 10MB</p>
+                    <button class="btn btn-secondary" id="browse-btn"><span class="icon">📄</span> Browse Files</button>
+                    <input type="file" id="file-input" hidden accept=".pdf,.docx,.txt">
+                </div>
+
+                <!-- Step 2: Job Role Input -->
+                <div id="job-role-section" class="job-role-section hidden">
+                    <div class="file-success-box">
+                        <div class="file-success-info">
+                            <div class="success-icon">✓</div>
+                            <span id="uploaded-file-name">resume.pdf</span>
+                        </div>
+                        <button id="remove-file" class="btn-text">Remove</button>
+                    </div>
+
+                    <div class="role-input-box">
+                        <label for="job-role">Target Job Role</label>
+                        <p class="role-desc">Enter the position you are applying for to get accurate ATS matches.</p>
+                        <input type="text" id="job-role" placeholder="e.g. React Developer, Data Analyst..." required>
+                        <button id="analyze-btn" class="btn btn-primary btn-block">Analyze Suitability</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="section dashboard-section hidden">
+        <div class="container">
+            <div class="section-header">
+                <span class="subtitle">DASHBOARD</span>
+                <h2>Detailed insights at a glance</h2>
+                <p>A beautiful dashboard showing exactly where your resume stands.</p>
+            </div>
+
+            <div class="dashboard-panel">
+                <!-- Col 1: Main Score -->
+                <div class="dash-col dash-score-col">
+                    <div class="main-circle-container">
+                        <div class="main-circle" id="result-score-circle">
+                            <div class="circle-content">
+                                <span id="result-score-text">0%</span>
+                                <span class="mock-score-label">ATS Score</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p id="score-status-text">Analyzing...</p>
+                </div>
+
+                <!-- Col 2: Skill Match -->
+                <div class="dash-col dash-skills-col">
+                    <div class="col-header">
+                        <h3>Skill Match</h3>
+                    </div>
+                    <div class="skills-list" id="dynamic-skills">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Col 3: Suggestions -->
+                <div class="dash-col dash-suggest-col">
+                    <div class="col-header">
+                        <h3>Suggestions</h3>
+                    </div>
+                    <ul class="suggestions-list" id="dynamic-suggestions">
+                        <!-- Populated by JS -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="subtitle">FEATURES</span>
+                <h2>Everything you need to stand out</h2>
+                <p>Our smart analyzes every aspect of your resume to help you land<br>more interviews.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h4>ATS Score Analysis</h4>
+                    <p>Get a detailed compatibility score showing how well your resume performs with applicant tracking
+                        systems.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h4>Keyword Matching</h4>
+                    <p>Identify missing keywords from job descriptions and optimize your resume for maximum visibility.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💡</div>
+                    <h4>Smart Suggestions</h4>
+                    <p>Receive smart recommendations to strengthen your bullet points and highlight achievements.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h4>Resume Feedback</h4>
+                    <p>Get comprehensive feedback on formatting, structure, and content with actionable improvements.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="subtitle">TESTIMONIALS</span>
+                <h2>Loved by job seekers</h2>
+                <p>Thousands of professionals have leveled up their resumes with us.</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"ResumeAnalyzer helped me identify critical keywords I was missing. I got 3x more callbacks after
+                        optimizing my resume!"</p>
+                    <div class="author">
+                        <div class="avatar">SC</div>
+                        <div class="author-info">
+                            <h4>Sarah Chen</h4>
+                            <span>Software Engineer at Google</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"The ATS score feature is incredible. I went from a 54% to 91% score and landed my dream role
+                        within two weeks."</p>
+                    <div class="author">
+                        <div class="avatar">MJ</div>
+                        <div class="author-info">
+                            <h4>Marcus Johnson</h4>
+                            <span>Product Manager at Stripe</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Clean, intuitive, and genuinely useful. The smart suggestions made my resume stand out from
+                        hundreds of applicants."</p>
+                    <div class="author">
+                        <div class="avatar">ER</div>
+                        <div class="author-info">
+                            <h4>Emily Rodriguez</h4>
+                            <span>UX Designer at Figma</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
